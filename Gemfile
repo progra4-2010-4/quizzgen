@@ -31,7 +31,7 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # end
 gem 'jquery-rails', '~> 0.2.5'
 gem "formtastic", "~> 1.1.0"
-gem 'clearance'
+gem 'clearance', '~> 0.9.0.rc9'
 gem 'haml'
 gem 'haml-rails'
 
