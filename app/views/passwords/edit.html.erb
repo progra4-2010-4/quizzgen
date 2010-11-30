@@ -3,6 +3,17 @@
 <p>
   Your password has been reset. Choose a new password below.
 </p>
+<% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this note from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
 
 <%= semantic_form_for(:user,
             :url  => user_password_path(@user, :token => @user.confirmation_token),
