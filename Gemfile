@@ -34,6 +34,7 @@ gem "formtastic", "~> 1.1.0"
 gem 'clearance', '~> 0.9.0.rc9'
 gem 'haml'
 gem 'haml-rails'
+gem 'acts-as-taggable-on'
 
 group :development, :test do 
   gem 'autotest', '~> 4.3.2'

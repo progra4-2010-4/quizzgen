@@ -28,6 +28,7 @@ GEM
       activemodel (= 3.0.3)
       activesupport (= 3.0.3)
     activesupport (3.0.3)
+    acts-as-taggable-on (2.0.6)
     annotate-models (1.0.4)
     arel (2.0.4)
     autotest (4.3.2)
@@ -149,6 +150,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts-as-taggable-on
   annotate-models (~> 1.0.4)
   autotest (~> 4.3.2)
   autotest-rails-pure (~> 4.1.0)
