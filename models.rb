@@ -11,4 +11,3 @@ class Question
     property :question, Text
 end
 
-DataMapper.auto_upgrade!
