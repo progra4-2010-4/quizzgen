@@ -3,6 +3,7 @@ require 'carrierwave'
 
 DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
 
+
 class ResponseUploader < CarrierWave::Uploader::Base
       storage :file
       def store_dir; "responses"; end
@@ -11,6 +12,8 @@ end
 class Question
     include DataMapper::Resource
     Tags = ['lang', 'css', 'jquery', 'rails', 'theory']
+    Seeds = Dir.entries("#{File.dirname(__FILE__)}/seeds").
+                reject{|x| (x =~ /\.{1,2}/) == 0}.collect{|f| "#{File.dirname(__FILE__)}/seeds/#{f}"}
 
     property :id, Serial
     property :tag, String

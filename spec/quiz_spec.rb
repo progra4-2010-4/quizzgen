@@ -3,9 +3,11 @@ require 'dm-migrations'
 
 seed = lambda {
         DataMapper.auto_migrate!
-        yml = YAML.load_file "../seeds.yml"
-        yml.each_key do |k|
-           Question.create :tag=>yml[k]['tag'], :question=>yml[k]['question']
+        Question::Seeds.each do |f|
+            yml = YAML.load_file f
+            yml.each_key do |k|
+               Question.create :tag=>yml[k]['tag'], :question=>yml[k]['question']
+            end
         end
 }
 
