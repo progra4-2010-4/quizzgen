@@ -26,9 +26,11 @@ class Question
                           :properties => [:id, :tag, :question])
     end
 
-    def self.seed
+    def self.seed(seed_path=nil)
+        seed_path ||= File.join(File.dirname(__FILE__), 'seeds')
+        puts seed_path
         Tags.each do |tag|
-            File.open("#{File.dirname(__FILE__)}/seeds/#{tag}.markdown") do |f| 
+            File.open("#{seed_path}/#{tag}.markdown") do |f| 
                 contents = f.read
                 contents.split("---").each do |content|
                     self.create :tag => tag, :question => content

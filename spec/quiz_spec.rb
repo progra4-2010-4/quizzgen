@@ -3,7 +3,7 @@ require 'dm-migrations'
 require 'dm-aggregates'
 seed = lambda {
         DataMapper.auto_migrate!
-        Question.seed
+        Question.seed File.join(File.dirname(__FILE__), 'fixtures')
 }
 
 describe Question do 
