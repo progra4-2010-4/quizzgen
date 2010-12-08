@@ -3,6 +3,7 @@ dm-core --version "~> 1.0.0"
 dm-migrations --version "~> 1.0.0"
 dm-timestamps --version "~> 1.0.0"
 dm-aggregates --version "~> 1.0.0"
+dm-ar-finders
 coderay --version "~> 0.9.5"
 rdiscount --version "~> 1.6.5"
 hpricot --version "~> 0.8.2"
