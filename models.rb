@@ -1,13 +1,6 @@
 %w{core migrations validations timestamps aggregates ar-finders}.each{|x| require "dm-#{x}"}
-require 'carrierwave'
 
 DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
-
-
-class ResponseUploader < CarrierWave::Uploader::Base
-      storage :file
-      def store_dir; "responses"; end
-end
 
 class Question
     include DataMapper::Resource
@@ -49,12 +42,13 @@ class Taker
     property :response, String
     #also, file response
 #    mount_uploader :response, ResponseUploader
+    
+    Takers = ["10841046", "10751107", "10841069", "10841012", "10851016", "10851033", "10911203", "10911020", "10611237", "10741036", "10841130", "10841297", "10841181", "10711134", "10841264"]
 
     has n, :questions, :through => Resource
-
+    
     validates_uniqueness_of :uid
-    validates_within :uid, 
-                     :set => ["10841046", "10751107", "10841069", "10841012", "10851016", "10851033", "10911203", "10911020", "10611237", "10741036", "10841130", "10841297", "10841181", "10711134", "10841264"]
+    validates_within :uid, :set => Takers
     
     after :save do 
         questions = []
