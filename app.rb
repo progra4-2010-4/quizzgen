@@ -17,8 +17,41 @@ class Quizzly < Sinatra::Base
         end
     end
 
+    helpers do 
+        def started?
+            !!session[:taker]
+        end
+
+        def taker 
+            session[:taker]
+        end
+    end
+    
+    before do 
+        if session[:ended]
+            halt "Ya se terminó el examen, buscá que hacer"
+        end
+    end
+
     get '/' do 
-        Question.all.inspect 
+        @questions = started? ? taker.questions : []
+        haml :questions
     end
    
+
+    get '/ledashboard' do 
+        @takers = Taker.all
+        haml :dashboard
+    end
+
+    post '/start' do 
+        t = Taker.new :uid => params[:uid]
+        if t.save then "OK" else "not ok!" end
+    end
+
+    post '/end' do 
+        #associate the upload to the taker and kill his session
+        session[:ended] = true
+        "OK"
+    end
 end
