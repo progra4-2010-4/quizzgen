@@ -1,6 +1,12 @@
 %w{core migrations validations timestamps aggregates}.each{|x| require "dm-#{x}"}
+require 'carrierwave'
 
 DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
+
+class ResponseUploader < CarrierWave::Uploader::Base
+      storage :file
+      def store_dir; "responses"; end
+end
 
 class Question
     include DataMapper::Resource
@@ -19,7 +25,9 @@ class Taker
     property :id, Serial
     property :uid, String
     property :created_at, DateTime
+    property :response, String
     #also, file response
+    mount_uploader :response, ResponseUploader
 
     has n, :questions, :through => Resource
 
