@@ -6,7 +6,7 @@ require 'models'
 
 class Quizzly < Sinatra::Base
     
-    enable :session
+    enable :sessions
 
     configure do
         #DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
@@ -20,7 +20,7 @@ class Quizzly < Sinatra::Base
         end
 
         def taker 
-            session[:taker]
+            Taker.find session[:taker]
         end
     end
     
@@ -43,7 +43,8 @@ class Quizzly < Sinatra::Base
 
     post '/start' do 
         t = Taker.new :uid => params[:uid]
-        if t.save then "OK" else "not ok!" end
+        if t.save then session[:taker] = t.id; "OK" else "not ok!" end
+        
     end
 
     post '/end' do 
