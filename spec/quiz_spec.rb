@@ -50,5 +50,9 @@ describe Taker do
         @user.questions.sort.should == @user.questions.uniq.sort
     end
 
+    it "should have questions of every category" do
+        @user.questions.collect{|q| q.tag}.sort.should == Question::Tags.sort
+    end
+
     it "should have an attached response"
 end
