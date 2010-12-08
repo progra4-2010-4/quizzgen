@@ -54,5 +54,4 @@ describe Taker do
         @user.questions.collect{|q| q.tag}.sort.should == Question::Tags.sort
     end
 
-    it "should have an attached response"
 end
