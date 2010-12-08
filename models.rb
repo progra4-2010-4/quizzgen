@@ -25,6 +25,17 @@ class Question
         self.find_by_sql("SELECT  `id`, `tag`, `question` FROM questions WHERE tag='#{tag}' ORDER BY RANDOM() limit 1",
                           :properties => [:id, :tag, :question])
     end
+
+    def self.seed
+        Tags.each do |tag|
+            File.open("#{File.dirname(__FILE__)}/seeds/#{tag}.markdown") do |f| 
+                contents = f.read
+                contents.split("---").each do |content|
+                    self.create :tag => tag, :question => content
+                end
+            end
+        end
+    end
 end
 
 class Taker

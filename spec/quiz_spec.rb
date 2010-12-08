@@ -1,14 +1,9 @@
 require File.join(File.dirname(__FILE__), '..', 'models.rb')
 require 'dm-migrations'
-
+require 'dm-aggregates'
 seed = lambda {
         DataMapper.auto_migrate!
-        Question::Seeds.each do |f|
-            yml = YAML.load_file f
-            yml.each_key do |k|
-               Question.create :tag=>yml[k]['tag'], :question=>yml[k]['question']
-            end
-        end
+        Question.seed
 }
 
 describe Question do 

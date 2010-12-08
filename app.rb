@@ -11,12 +11,7 @@ class Quizzly < Sinatra::Base
     configure do
         #DataMapper.setup(:default, (ENV["DATABASE_URL"] || "sqlite3:///#{Dir.pwd}/development.sqlite3"))
         DataMapper.auto_migrate!
-        Question::Seeds.each do |seed|
-            yml = YAML.load_file seed 
-            yml.each_key do |k|
-               Question.create :tag=>yml[k]['tag'], :question=>yml[k]['question']
-            end
-        end
+        Question.seed
     end
 
     helpers do 

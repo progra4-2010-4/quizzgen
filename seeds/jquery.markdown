@@ -1,0 +1,10 @@
+jquery
+
+---
+
+does
+
+
+---
+
+rule
