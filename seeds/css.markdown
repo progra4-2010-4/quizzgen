@@ -76,14 +76,14 @@ Considere el siguiente markup:
     <html>
         <head></head>
         <body>
-            <div id="col1">Lorem ipsum</div>
-            <div id="col2">Dolor sit</div>
+            <div id="col1">Dolor sit</div>
             <div id="col2">Amet blah blah</div>
+            <div id="footer">Lorem ipsum</div>
         </body>
     </html>
 
 
-¿Qué modificaciones haría y qué css agregaría para que los tres `div`s se vean como tres columnas contiguas?
+¿Qué modificaciones haría y qué css agregaría para que los divs `col1` y `col2` salieran como columnas contiguas y el div `  footer`, abajo de éstos?
 
 ---
 
