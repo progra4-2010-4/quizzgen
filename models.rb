@@ -54,7 +54,7 @@ class Taker
         questions = []
         q = nil
         get_question = lambda { |t| q = Question.random_question(t) }
-        Question::Tags.each do |tag|
+        Question::Tags.shuffle.each do |tag|
             get_question.call(tag)
             while questions.include?(q) do
                 get_question.call(tag)
