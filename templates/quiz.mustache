@@ -1,11 +1,48 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script>
-            alert("why, hello");
+        <meta charset="utf-8" />
+        <script src="http://yandex.st/highlightjs/5.16/highlight.min.js"></script>
+        <link rel="stylesheet" href="http://yandex.st/highlightjs/5.16/styles/github.min.css">
+        <script type="text/javascript" charset="utf-8">
+            hljs.initHighlightingOnLoad();
         </script>
+            
+        <style type="text/css" media="screen">
+            body{
+                color: #444;
+                font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+                width: 700px;
+                margin: 0 auto;
+            }    
+            em{
+                background-color: #FFF666;
+            }
+
+            a{
+                color: #06F;
+                text-decoration: none;
+            }
+            .info{
+                background-color: #AFA;
+                font-weight: bold;
+            }
+
+            .warn{
+                background-color: #FCC;
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
+        <h1>Programación 4: examen parcial III</h1>
+        <p>A continuación se te presentan ciertas preguntas, las respuéstas tenés que agregarlas
+           en un <em>documento html aparte</em>. El diseño de éste se evaluará, así que asegurate
+           de que no se vea tan mal. 
+
+           El examen se entrega via git, así que no olvidés hacer un <code>git add</code>
+           de los archivos que conformen tus respuestas y un <code>git push origin master</code> para entregarlo.
+        </p>
         <ol>
         {{#question}}
         <li> {{{ content }}} </li>
